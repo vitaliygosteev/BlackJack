@@ -77,7 +77,7 @@ class Money:
 def take_bet(money):
     while True:
         try:
-            money.bet = int(input('Make a bet:\n'))
+            money.bet = abs(int(input('Make a bet:\n')))
         except ValueError:
             print(Fore.RED + 'Sorry, a bet must be an integer!')
         else:
