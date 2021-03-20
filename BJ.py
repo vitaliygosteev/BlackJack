@@ -216,8 +216,6 @@ while True:
             elif rerun[0].upper() == 'N':
                 print(Fore.CYAN + 'Thank you for playing! We hope to see you again soon!')
                 break
-
-
     else:
         print(Fore.RED + 'You lost all your money as always, ahahhah')
         break
