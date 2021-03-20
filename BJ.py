@@ -1,3 +1,4 @@
+import sys
 import random
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
@@ -138,6 +139,15 @@ def dealer_wins(player, dealer, money):
 def push(player, dealer):
     print(Fore.BLUE + '\nDealer and Player tie!')
 
+def wrong_rerun():
+    while True:
+        rerun = input(Fore.YELLOW + 'Would you like to play again? Enter Y or N\n')
+        if rerun[0].upper() == 'Y':
+            break
+        elif rerun[0].upper() == 'N':
+            sys.exit(Fore.CYAN + 'Thank you for playing! We hope to see you again soon!')
+        else:
+            continue
 
 # THE ENTIRE GAME
 
@@ -195,18 +205,19 @@ while True:
 
     print("\nPlayer's value is ", player_money.total)
 
-
-    rerun = input(Fore.YELLOW + 'Would you like to play again? Enter Y or N\n')
-
     if player_money.total > 0:
-        if rerun[0].upper() == 'Y':
-            playing = True
-            continue
-        elif rerun[0].upper() == 'N':
-            print(Fore.CYAN + 'Thank you for playing! We hope to see you again soon!')
-            break
+        rerun = input(Fore.YELLOW + 'Would you like to play again? Enter Y or N\n')
+        if rerun[0].upper() != 'Y' and rerun[0].upper() != 'N':
+            wrong_rerun()
         else:
-            print(Fore.RED + Style.BRIGHT + 'The game never ends!')
+            if rerun[0].upper() == 'Y':
+                playing = True
+                continue
+            elif rerun[0].upper() == 'N':
+                print(Fore.CYAN + 'Thank you for playing! We hope to see you again soon!')
+                break
+
+
     else:
         print(Fore.RED + 'You lost all your money as always, ahahhah')
         break
